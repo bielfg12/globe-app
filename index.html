@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Globe</title>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    // Setup
+    var scene = new THREE.Scene();
+    var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    var renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.body.appendChild(renderer.domElement);
+
+    // Create the Globe
+    var geometry = new THREE.SphereGeometry(1, 32, 32);
+    var texture = new THREE.TextureLoader().load('https://example.com/globe_texture.jpg'); // Adicione uma textura do globo
+    var material = new THREE.MeshBasicMaterial({ map: texture });
+    var globe = new THREE.Mesh(geometry, material);
+    scene.add(globe);
+
+    // Camera position
+    camera.position.z = 3;
+
+    // Animation and Rotation
+    function animate() {
+      requestAnimationFrame(animate);
+      globe.rotation.y += 0.005; // Rotate the globe
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Mouse over to detect continents
+    document.addEventListener('mousemove', function(event) {
+      // Lógica para destacar o continente ao passar o mouse
+    });
+
+    // Click event to select a continent
+    document.addEventListener('click', function(event) {
+      // Navegue para a página apropriada com base no continente selecionado
+      window.location.href = "https://example.com/continent_page";
+    });
+  </script>
+</body>
+</html>
