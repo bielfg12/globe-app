@@ -21,7 +21,7 @@
 
     // Create the Globe
     var geometry = new THREE.SphereGeometry(1, 32, 32);
-    var texture = new THREE.TextureLoader().load('https://example.com/globe_texture.jpg'); // Adicione uma textura do globo
+    var texture = new THREE.TextureLoader().load('https://github.com/bielfg12/globe-app/blob/e6facc22d13cd6fec8c19893b558629449fcdfd4/earth.jpg'); // Adicione uma textura do globo
     var material = new THREE.MeshBasicMaterial({ map: texture });
     var globe = new THREE.Mesh(geometry, material);
     scene.add(globe);
@@ -40,12 +40,6 @@
     // Mouse over to detect continents
     document.addEventListener('mousemove', function(event) {
       // Lógica para destacar o continente ao passar o mouse
-    });
-
-    // Click event to select a continent
-    document.addEventListener('click', function(event) {
-      // Navegue para a página apropriada com base no continente selecionado
-      window.location.href = "https://example.com/continent_page";
     });
   </script>
 </body>
